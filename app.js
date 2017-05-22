@@ -1,6 +1,21 @@
 window.onload = function(){
 
   var bar = $('#bar')
+  var swipearea = $('#swipearea')
+  var verticalLayout = $('#vertical-layout')
+  var horizontalLayout = $('#horizontal-layout')
+
+
+  $( window ).on( "orientationchange", function( event ) {
+    if (event.orientation == 'landscape') {
+      verticalLayout.css('display', 'none')
+      horizontalLayout.css('display','block')
+      }
+    if (event.orientation == 'portrait') {
+      horizontalLayout.css('display', 'none')
+      verticalLayout.css('display','absolute')
+    }
+  });
 
   var deltas = [1,2,3,4,5,6,7, 8]
 
@@ -61,19 +76,63 @@ window.onload = function(){
     leaveCurrent()
     if (activeIndex < jObjectsArray.length - 1) {
       activeIndex++
+      leftSwipeAnimation()
     }
     viewDelta({data: {index: activeIndex}})
     scrollToActiveDelta();
+  }
+
+  var leftSwipeAnimation = function() {
+    $('#rightCard').animate({
+        left: '50%',
+    }, {
+      duration: 500 ,
+      complete: function(){
+        $('#rightCard').css({
+          left: '150%',
+        });
+      }});
+    $('#swipearea').animate({
+        left: '-150%',
+    }, {
+      duration: 500 ,
+      complete: function() {
+        $('#swipearea').css({
+          left: '50%',
+        });
+      }});
   }
 
   var swipedright = function(){
     leaveCurrent()
     if (activeIndex > 0) {
       activeIndex--
+      rightSwipeAnimation()
     }
     console.log(activeIndex);
     viewDelta({data: {index: activeIndex}})
     scrollToActiveDelta();
+  }
+
+  var rightSwipeAnimation = function() {
+    $('#leftCard').animate({
+        left: '50%',
+    }, {
+      duration: 500 ,
+      complete: function(){
+        $('#leftCard').css({
+          left: '-150%',
+        });
+      }});
+    $('#swipearea').animate({
+        left: '150%',
+    }, {
+      duration: 500 ,
+      complete: function() {
+        $('#swipearea').css({
+          left: '50%',
+        });
+      }});
   }
 
   var scrollToActiveDelta = function() {
@@ -91,10 +150,10 @@ window.onload = function(){
       scrollLeft: amountToScroll
     }, 600);
   }
+
   //to initialize you are looking at the first Delta
   viewDelta({data: {index: activeIndex}});
 
-  var swipearea = $('#swipearea')
   swipearea.on("swiperight",swipedright)
   swipearea.on("swipeleft",swipedleft)
 }
