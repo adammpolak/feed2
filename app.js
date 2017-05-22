@@ -6,6 +6,13 @@ window.onload = function(){
   var horizontalLayout = $('#horizontal-layout')
 
 
+  var elem = document.getElementById("body");
+
+    $('#header-bar').click(function() {
+        req = elem.requestFullScreen || elem.webkitRequestFullScreen || elem.mozRequestFullScreen;
+        req.call(elem);
+    })
+
   $( window ).on( "orientationchange", function( event ) {
     if (event.orientation == 'landscape') {
       verticalLayout.css('display', 'none')

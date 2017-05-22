@@ -48,7 +48,7 @@ select {
   width: 200px;
 }
 
-.header-bar {
+#header-bar {
   /* Bar: */
   background: rgba(250,250,250,0.90);
   box-shadow: 0 0 0 0 #B2B2B2;
