@@ -4,23 +4,27 @@ window.onload = function(){
   var swipearea = $('#swipearea')
   var verticalLayout = $('#vertical-layout')
   var horizontalLayout = $('#horizontal-layout')
+  var horizontalHeader = $('#horizontal-header')
+  var roadmapImage = $('#roadmap-image')
 
-
-  var elem = document.getElementById("body");
-
-    $('#header-bar').click(function() {
-        req = elem.requestFullScreen || elem.webkitRequestFullScreen || elem.mozRequestFullScreen;
-        req.call(elem);
-    })
+  //initialize in portrait mode
+  horizontalLayout.hide()
+  horizontalHeader.hide()
+  roadmapImage.hide()
 
   $( window ).on( "orientationchange", function( event ) {
     if (event.orientation == 'landscape') {
-      verticalLayout.css('display', 'none')
-      horizontalLayout.css('display','block')
+      verticalLayout.hide()
+      horizontalLayout.show()
+      horizontalHeader.show()
+      $("html, body").animate({
+        scrollTop: 800
+      }, 600);
       }
     if (event.orientation == 'portrait') {
-      horizontalLayout.css('display', 'none')
-      verticalLayout.css('display','absolute')
+      verticalLayout.show()
+      horizontalLayout.hide()
+      horizontalHeader.hide()
     }
   });
 
@@ -62,6 +66,7 @@ window.onload = function(){
 
   var jObjectsArray = []
 
+//THIS IS FOR THE VERTICAL VIEW
   _.forEach(deltas, function(value, index){
     var deltabox = $('<div>');
     var delta = $('<div>');
@@ -76,6 +81,49 @@ window.onload = function(){
     delta.click({value: value, index: index},clickViewDelta)
     // delta.draggable();
     bar.append(deltabox);
+  })
+
+//THIS IS FOR THE HORIZONTAL VIEW
+  _.forEach(deltas, function(value, index){
+    var timelineRow = $('<div>');
+    var timelineRowDelta = $('<div>');
+    var innerHorizontal = $('<div>');
+    var timelineRowDuration = $('<div>');
+    var timelineRowDurationItem = $('<div>');
+    timelineRow.addClass("timeline-row")
+    timelineRowDelta.addClass("timeline-row-delta")
+    innerHorizontal.addClass("inner-horizontal")
+    innerHorizontal.html(`${value}`);
+    innerHorizontal.draggable({
+      start: function(event,ui) {
+        console.log(value);
+        roadmapImage.show()
+      },
+      revert: function(event,ui) {
+        $(this).data("uiDraggable").originalPosition = {
+          top: 0,
+          left: 0
+        };
+        console.log('we let go')
+        return !event;
+        roadmapImage.hide()
+      }
+    });
+    timelineRowDuration.addClass("timeline-row-duration")
+    timelineRowDurationItem.addClass("timeline-row-duration-item")
+    timelineRow.append(timelineRowDelta)
+    timelineRowDelta.append(innerHorizontal)
+    timelineRow.append(timelineRowDuration)
+    timelineRowDuration.append(timelineRowDurationItem)
+    horizontalLayout.append(timelineRow)
+
+    //randomize lengths of duration
+    randoStartDate = Math.floor(Math.random() * 70) + 10
+    randoDuration = Math.floor(Math.random() * 600) + 100
+    timelineRowDurationItem.css({
+      "margin-left": randoStartDate,
+      "width": randoDuration
+    })
   })
 
 

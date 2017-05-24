@@ -41,6 +41,7 @@
 
 body {
   margin: 0px;
+  font-family: Arial
 }
 
 
@@ -97,14 +98,14 @@ select {
   height: 114px;
   min-width: 114px;
   border-radius: 50%;
-  background: blue;
+  background: #D8D8D8;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .unread {
-  border: 4px solid red;
+  border: 4px solid #979797;
 }
 
 .card {
@@ -161,62 +162,73 @@ select {
   position: absolute;
 }
 
+
+
+/*
+HORIZONTAL*/
+
 #horizontal-layout {
-  height: 100vh;
-  width: 100vw;
-  background: pink;
-  display: none;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: white;
+  display: flex;
+  flex-direction:column-reverse;
 }
 
-@media
-(-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-    /* Retina-specific stuff here */
-    #topsection { top: 0; height: 334px; overflow: hidden; }
-    #main-section { top: 334px; bottom: 98px; overflow: hidden; background: #CCC; }
-    #swipearea {
-      position: absolute;
-      width: 612px;
-      height: 700px;
-      left: 50%;
-      top: 138px;
-      margin-left: -25%;
-    }
+#horizontal-header {
+  position: fixed;
+  height: 50px;
+  background: white;
+  width: 100vw;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
-    .unread {
-      border: 4px solid red;
-    }
+#roadmap-image {
+  position: fixed;
+  background-color: pink;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+}
 
-    .header-bar {
-      /* Bar: */
-      height: 128px;
-    }
 
-    .leftarrow {
-      height: 21px;
-    }
+.timeline-row {
+  height: 164px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    #bar {
-      height: 206px;
-    }
+.timeline-row-delta {
+  width: 206px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .deltabox {
-      width: 164px;
-    }
+.timeline-row-duration {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
 
-    .active {
-      border-bottom: 2px solid orange;
-    }
+.timeline-row-duration-item {
+  height: 26px;
+  background: #44DB5E;
+  border-radius: 50px;
+  /*width: 500px;
+  margin-left: 50px;*/
+}
 
-    .delta {
-      height: 120px;
-      min-width: 120px;
-      margin: 0 26px;
-    }
-
-    .inner {
-      height: 114px;
-      min-width: 114px;
-    }
-
+.inner-horizontal {
+  height: 114px;
+  width: 114px;
+  border-radius: 50%;
+  background: #D8D8D8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,0 +1,169 @@
+/*body{
+  font-family: "Trebuchet MS", sans-serif;
+}
+.demoHeaders {
+  margin-top: 2em;
+}
+#dialog-link {
+  padding: .4em 1em .4em 20px;
+  text-decoration: none;
+  position: relative;
+}
+#dialog-link span.ui-icon {
+  margin: 0 5px 0 0;
+  position: absolute;
+  left: .2em;
+  top: 50%;
+  margin-top: -8px;
+}
+#icons {
+  margin: 0;
+  padding: 0;
+}
+#icons li {
+  margin: 2px;
+  position: relative;
+  padding: 4px 0;
+  cursor: pointer;
+  float: left;
+  list-style: none;
+}
+#icons span.ui-icon {
+  float: left;
+  margin: 0 4px;
+}
+.fakewindowcontain .ui-widget-overlay {
+  position: absolute;
+}*/
+/*this is to make loading dissapear - from mobile css which is getting called*/
+.ui-loading .ui-loader { display: block; }
+.ui-loader { display: none; position: absolute; opacity: .85; z-index: 100; left: 50%; width: 200px; margin-left: -130px; margin-top: -35px; padding: 10px 30px; }
+
+body {
+  margin: 0px;
+}
+
+
+select {
+  width: 200px;
+}
+
+#header-bar {
+  /* Bar: */
+  background: rgba(250,250,250,0.90);
+  box-shadow: 0 0 0 0 #B2B2B2;
+  width: 100%;
+  height: 64px;
+}
+
+.leftarrow {
+  color: #0076FF;
+  height: 10px;
+}
+
+#bar {
+  height: 103px;
+  min-width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  overflow: scroll;
+}
+
+.deltabox {
+  height: auto;
+  width: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active {
+  border-bottom: 2px solid orange;
+}
+
+.delta {
+  height: 60px;
+  min-width: 60px;
+  margin: 0 13px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.inner {
+  height: 57px;
+  min-width: 57px;
+  border-radius: 50%;
+  background: blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.unread {
+  border: 2px solid red;
+}
+
+.card {
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  top: 69px;
+  background: #EBEBEB;
+  box-shadow: 0 10px 4px 0 rgba(0,0,0,0.50);
+  border-radius: 5px;
+  margin-left: -37.5%;
+}
+
+#leftCard {
+  background: green;
+  left: -150%;
+}
+#swipearea {
+  left: 50%;
+}
+#rightCard {
+  left: 150%;
+  background: red;
+}
+
+#main-section {
+  position: absolute;
+  overflow: hidden;
+}
+
+
+
+#topsection, #footer, #main-section { position: absolute; left: 0; width: 100%; }
+#topsection, #footer { overflow: hidden;}
+#topsection { top: 0; height: 167px; overflow: hidden; }
+#main-section { top: 167px; bottom: 49px; overflow: hidden; background: #CCC; }
+#footer { bottom: 0; height: 49px; }
+
+/*#divPush {
+
+}*/
+
+#footer {
+  background: pink;
+}
+
+#topsection {
+
+}
+
+#vertical-layout {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+#horizontal-layout {
+  height: 100vh;
+  width: 100vw;
+  background: pink;
+  display: none;
+}
