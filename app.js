@@ -25,6 +25,7 @@ window.onload = function(){
       verticalLayout.show()
       horizontalLayout.hide()
       horizontalHeader.hide()
+      roadmapImage.hide()
     }
   });
 
@@ -97,6 +98,7 @@ window.onload = function(){
     innerHorizontal.draggable({
       start: function(event,ui) {
         console.log(value);
+        horizontalLayout.hide()
         roadmapImage.show()
       },
       revert: function(event,ui) {
@@ -105,8 +107,17 @@ window.onload = function(){
           left: 0
         };
         console.log('we let go')
-        return !event;
+        verticalLayout.show()
+        horizontalLayout.hide()
+        horizontalHeader.hide()
         roadmapImage.hide()
+        verticalLayout.hide()
+        horizontalLayout.show()
+        horizontalHeader.show()
+        $("html, body").animate({
+          scrollTop: 800
+        }, 600);
+        return !event;
       }
     });
     timelineRowDuration.addClass("timeline-row-duration")

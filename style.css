@@ -177,7 +177,7 @@ HORIZONTAL*/
 
 #horizontal-header {
   position: fixed;
-  height: 50px;
+  height: 100px;
   background: white;
   width: 100vw;
   z-index: 100;
@@ -188,10 +188,11 @@ HORIZONTAL*/
 
 #roadmap-image {
   position: fixed;
-  background-color: pink;
-  width: 100vw;
-  height: 100vh;
-  z-index: 99;
+  background-image: url("images/Screen Shot 2017-05-24 at 11.08.57 AM.png");
+  background-size: contain;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: 101;
 }
 
 
